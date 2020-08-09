@@ -1,7 +1,7 @@
-import { Request, Response } from 'express'
+import { Request, Response } from 'express';
 
-import db from '../database/connection'
-import convertHourToMinutes from '../utils/convertHourToMinutes'
+import db from '../database/connection';
+import convertHourToMinutes from '../utils/convertHourToMinutes';
 
 interface ScheduleItem {
   week_day: number;
@@ -53,7 +53,6 @@ export default class ClassesController {
     } = request.body
   
     const trx = await db.transaction()
-    //O method transaction permite fazer todas as operações ao mesmo tempo;
   
     try {
       const insertedUsersIds = await trx('users').insert({
@@ -82,13 +81,13 @@ export default class ClassesController {
     
       await trx('class_schedule').insert(classSchedule)
     
-      await trx.commit() //Somente aqui depois de passar por todas as operações sem erros, que irá sobrescrever o db;
+      await trx.commit() 
     
       return response.status(201).send()
     } catch (err) {
       console.log(err)
       
-      await trx.rollback() //Se der erro o "rollback" desfaz qualquer alteração que foi realizada no DB;
+      await trx.rollback() 
       
       return response.status(400).json({
         error: "Unexpected error while creating new class!"
