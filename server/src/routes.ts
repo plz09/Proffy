@@ -1,5 +1,6 @@
 import express from 'express';
 import db from './database/connection';
+
 import convertHourToMinutes from './utils/convertHourToMinutes';
 
 const routes = express.Router();
