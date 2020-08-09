@@ -1,6 +1,6 @@
 import express from 'express';
-import ClassesController from './controllers/classesController';
-import ConnectionsController from './controllers/connectionsController';
+import ClassesController from './controllers/ClassesController';
+import ConnectionsController from './controllers/ConnectionsController';
 
 const routes = express.Router();
 const classesController = new ClassesController();
